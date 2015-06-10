@@ -8,7 +8,13 @@ http://www.springframework.org/schema/context
 http://www.springframework.org/schema/context/spring-context-3.0.xsd">
  
 	<context:component-scan base-package="com.sharemarking.helloworld.controller" />
- 
+ 	
+ 	<bean id="employeeManager" class="com.sharemarking.helloworld.service.EmployeeManager" />
+ 	
+ 	<bean name="/employee" class="com.sharemarking.helloworld.controller.EmployeeController">
+		<property name="employeeManager" ref="employeeManager"/>
+	</bean>
+ 	
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
